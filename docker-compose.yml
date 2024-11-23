@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  lexabot:
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+    container_name: lexabot
+    working_dir: /telegram_bot
+    restart: no
+    build:
+        context: .
+        dockerfile: Dockerfile
+    command: sh -c "python main.py"
+    volumes:
+        - ./app:/telegram_bot
